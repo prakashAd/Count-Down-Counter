@@ -1,8 +1,8 @@
 
-     var days =document.getElementById('days')   
-     var hours =document.getElementById('hours')   
-     varminutes =document.getElementById('minutes')   
-     var seconds =document.getElementById('seconds')   
+     let days =document.getElementById('days')   
+     let hours =document.getElementById('hours')   
+     let minutes =document.getElementById('minutes')   
+     let seconds =document.getElementById('seconds')   
 
      const currentYear = new Date().getFullYear()
      const currentYearTime = new Date("Jan 01 ${currentYear + 1} 00:00:00")

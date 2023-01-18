@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CountDown Timer</title>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
+      * {
+        box-sizing: border-box;
+      }
 
-        body{
-            /* background-image: url(happy\ new\ year\ 2023.jpg); */
-            height:100vh;
-            font-family:fantasy;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            
-            justify-content:center;
-            background:linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
-        }
+      body {
+        height: 100vh;
+        font-family: fantasy;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+      }
 
-        #demo{
-            color:rgb(133, 93, 93);
-            font-size:30px;
-            
-        }
-    
-/* 
+      #demo {
+        color: rgb(133, 93, 93);
+        font-size: 30px;
+      }
+
+      /* 
         .countdown{
 
             display:flex;
             transform: scale(2);
+            font-size: 100px;
         }
-
+/* */
+      /*
         .time{
             display:flex;
             flex-direction: column;
@@ -52,7 +50,7 @@
             line-height: 1;
             margin:0 0 5px;
         }
-        @media(max-width:500px){
+        @media(max-width:800px){
 
             h1{
                 font-size:45px;
@@ -70,9 +68,9 @@
             .time small{
                 font-size:10px;
             }
-        } */ 
+        } */
 
-/*        
+      /*        
         div {
             height: 100vh;
             display: flex;
@@ -81,7 +79,7 @@
             align-items: center;
             background-image:url(./happy\ new\ year\ 2023.jpg)
         } */
-/* 
+      /* 
         p {
             height: 100px;
             width: 600px;
@@ -92,25 +90,35 @@
 
 
         } */
-/* 
+      /* 
         h1,h2 {
             font-family: fantasy;
             color:white;
         } */
     </style>
+  </head>
 
-</head>
+  <body>
+    <h1
+      style="
+        text-align: justify;
+        font-size: 70px;
+        color: rgb(123, 117, 83);
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      "
+    >
+      Happy New Year 2024
+    </h1>
+    <h4 style="color: rgb(131, 127, 102); font-size: 50px">
+      Current Month:<span id="demo1"></span>
+    </h4>
+    <h3 style="font-size: 50px; color: rgb(131, 127, 102)">
+      CountDown Counter:
+    </h3>
 
-<body>
+    <div id="countdown" class="countdown"></div>
 
-
-   
-        <h1 style="text-align: justify; font-size:70px;color:rgb(123, 117, 83); font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Happy New Year 2024</h1>
-        <h3 style=" font-size:50px;color:rgb(131, 127, 102);">CountDown Counter:</h3>
-        <h4 style="color:rgb(131, 127, 102);font-size:50px;">Months:<span id="demo1" ></span></h4>
-        <div  id="countdown"class="countdown"></div>
-
-        <!--
+    <!--
        <div class="time">
         <h2 id="days"></h2>
         <small>Days</small>
@@ -133,65 +141,62 @@
         <small>Seconds</small>
        </div>  -->
 
-        
+    <p id="demo"></p>
 
-        <p id="demo"></p>
-    
+    <script>
+      let y = setInterval(function countMonth() {
+        let now = new Date().getMonth();
+        let month = [
+          "January",
+          "February",
+          "March,April,May,June,July,August,September,October,November,December",
+        ];
+        document.getElementById("demo1").innerHTML = month[now];
+      }, 1000);
 
-<script>
-var y = setInterval( function countMonth(){
- 
-    var now = new Date().getMonth()
-        document.getElementById('demo1').innerHTML = now
+      let dest = new Date("Jan 01, 2024 24:00:00").getTime();
 
-    },1000)
+      let x = setInterval(function CountDown() {
+        let now = new Date().getTime();
+        let diff = dest - now;
 
-var dest = new Date ("Jan 01, 2024 24:00:00").getTime() 
-    
+        // console.log(diff)
 
-        var x = setInterval(function CountDown() {
-            var now = new Date().getTime()
-            var diff = dest - now
+        let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        // console.log(days)
 
-            console.log(diff)
+        rem = diff % (1000 * 60 * 60 * 24);
 
+        let hours = Math.floor(rem / (1000 * 60 * 60));
+        // console.log(hours)
+        rem = diff % (1000 * 60 * 60);
 
+        let minutes = Math.floor(rem / (1000 * 60));
+        rem = diff % (1000 * 60);
 
+        // console.log(minutes)
 
-            var days = Math.floor(diff/ (1000 * 60 * 60 * 24))
-            console.log(days)
+        let seconds = Math.floor(rem / 1000);
+        rem = diff % 1000;
 
-             rem =diff%((1000 * 60 * 60 * 24))
+        // console.log(seconds)
 
-           
-
-
-            var hours = Math.floor(rem / (1000 * 60 * 60))
-            console.log(hours)
-            rem = diff % (1000 * 60 * 60)
-
-            var minutes = Math.floor(rem / (1000 * 60))
-            rem = diff % (1000 * 60)
-
-            console.log(minutes)
-
-
-            var seconds = Math.floor(rem / (1000))
-            rem = diff % (1000)
-
-
-            console.log(seconds)
-
-    
-        
-            document.getElementById('demo').innerHTML = days.toString().padStart(2,0) + "d" + ' ' + hours.toString().padStart(2,0) + "hrs" + ' ' + minutes.toString().padStart(2,0) + "min" + ' ' + seconds.toString().padStart(2,0) + "sec"
-        }, 1000)
-      
-        
+        document.getElementById("demo").innerHTML =
+          days.toString().padStart(2, 0) +
+          "d" +
+          " " +
+          hours.toString().padStart(2, 0) +
+          "hrs" +
+          " " +
+          minutes.toString().padStart(2, 0) +
+          "min" +
+          " " +
+          seconds.toString().padStart(2, 0) +
+          "sec";
+      }, 1000);
+      console.log(now);
     </script>
 
-        <!-- <script src="./app.js"></script> -->
-    
-</body>
-
+    <!-- <script src="./app.js"></script> -->
+  </body>
 </html>
